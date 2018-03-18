@@ -1,0 +1,11 @@
+<!-- <p>
+  video-center works!
+</p> -->
+<div class="row">
+  <div class="col-sm-9">
+    <app-video-detail *ngIf="selVideo" [onlyVideo]="selVideo"></app-video-detail> 
+  </div>
+  <div class="col-sm-3">
+    <app-video-list (SelectVideoEvent)="onSelectVideo($event)" [videos1]='videos'></app-video-list>
+  </div>
+</div>
