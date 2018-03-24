@@ -3,9 +3,28 @@
 </p> -->
 <div class="row">
   <div class="col-sm-9">
-    <app-video-detail *ngIf="selVideo" [onlyVideo]="selVideo"></app-video-detail> 
+    <div *ngIf="!hideNewVideo">
+      <h2>New Video</h2>
+      <form action="" #form="ngForm" class="well" (ngSubmit)="onSubmitAddVideo(form.value)">
+        <div class="form-group">
+          <label for="">Title</label>
+          <input type="text" class="form-control" required name="title" ngModel>
+        </div>
+        <div class="form-group">
+            <label for="">Url</label>
+            <input type="text" class="form-control" required name="url" ngModel>
+        </div>
+        <div class="form-group">
+            <label for="">Description</label>
+            <input type="text" class="form-control" required name="desc" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success" >Save</button>
+      </form>
+    </div>
+    <app-video-detail *ngIf="selVideo && hideNewVideo" [onlyVideo]="selVideo"></app-video-detail> 
   </div>
   <div class="col-sm-3">
+    <button style='margin-bottom:2px' type='button' class="btn btn-success btn-block" (click)="newVideoButtonClick()">+New Video</button>
     <app-video-list (SelectVideoEvent)="onSelectVideo($event)" [videos1]='videos'></app-video-list>
   </div>
 </div>
